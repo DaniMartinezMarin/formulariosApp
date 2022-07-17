@@ -2,6 +2,7 @@
 <hr />
 
 <form #miFormulario="ngForm">
+
   <!-- Radio -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Genero</label>
@@ -10,8 +11,11 @@
         <input
           class="form-check-input"
           type="radio"
+          value="M"
+          [(ngModel)]="persona.genero"
           name="radioGenero"
           id="radioMasculino"
+          required
         />
         <label class="form-check-label" for="radioMasculino"> Masculino </label>
       </div>
@@ -19,8 +23,11 @@
         <input
           class="form-check-input"
           type="radio"
+          value="F"
+          [(ngModel)]="persona.genero"
           name="radioGenero"
           id="radioFemenino"
+          required
         />
         <label class="form-check-label" for="radioFemenino"> Femenino </label>
       </div>
@@ -31,13 +38,14 @@
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Notificaciones</label>
     <div class="col-sm-9">
-      <div class="form-check form-switch">
+      <div class="form-check form-switch  mt-2">
         <input
           class="form-check-input"
           type="checkbox"
           role="switch"
           id="flexSwitchCheckChecked"
-          checked
+          [(ngModel)]="persona.notificaciones"
+          name="notificaciones"
         />
         <label class="form-check-label" for="flexSwitchCheckChecked">
           Quiero recibir notificaciones
@@ -54,8 +62,10 @@
         <input
           class="form-check-input"
           type="checkbox"
-          value=""
+          name="terminos"
+          [(ngModel)]="terminosYCondiciones"
           id="flexCheckDefault"
+          required
         />
         <label class="form-check-label" for="flexCheckDefault">
           Terminos y condiciones den uso
@@ -67,10 +77,24 @@
 
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary float-end">
+      <button class="btn btn-primary float-end" [disabled]="miFormulario.invalid">
         Guardar
       </button>
     </div>
   </div>
 
 </form>
+
+
+<h5>Valor del formulario</h5>
+<pre>{{ miFormulario.value | json }}</pre>
+<br>
+
+<h5>Persona</h5>
+<pre>{{ persona | json }}</pre>
+<br>
+
+<h5>Valid</h5>
+<pre>{{miFormulario.valid}}</pre>
+
+<h5>Condiciones:</h5>
