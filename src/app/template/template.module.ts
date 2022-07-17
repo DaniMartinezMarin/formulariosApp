@@ -7,13 +7,17 @@ import { BasicosComponent } from './basicos/basicos.component';
 import { DinamicosComponent } from './dinamicos/dinamicos.component';
 import { SwitchesComponent } from './switches/switches.component';
 
+import { CustomMinDirective } from './directives/custom-min.directive';
+
 
 
 @NgModule({
   declarations: [
     BasicosComponent,
     DinamicosComponent,
-    SwitchesComponent
+    SwitchesComponent,
+
+    CustomMinDirective
   ],
   imports: [
     CommonModule,
