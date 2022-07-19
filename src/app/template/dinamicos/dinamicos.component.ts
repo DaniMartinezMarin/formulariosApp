@@ -35,7 +35,7 @@ export class DinamicosComponent {
     }
 
     const favorito: Favorito = {
-      id: this.persona.favoritos.length,
+      id: this.persona.favoritos.length + 1,
       nombre: this.nuevoFavorito
     }
 
