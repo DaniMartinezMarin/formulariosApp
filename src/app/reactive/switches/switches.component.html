@@ -1,7 +1,7 @@
 <h2>Template: <small>Switches</small></h2>
 <hr />
 
-<form>
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
 
   <!-- Radio -->
   <div class="row mb-3">
@@ -12,7 +12,7 @@
           class="form-check-input"
           type="radio"
           value="M"
-          name="radioGenero"
+          formControlName="genero"
           id="radioMasculino"
         />
         <label class="form-check-label" for="radioMasculino"> Masculino </label>
@@ -22,7 +22,7 @@
           class="form-check-input"
           type="radio"
           value="F"
-          name="radioGenero"
+          formControlName="genero"
           id="radioFemenino"
         />
         <label class="form-check-label" for="radioFemenino"> Femenino </label>
@@ -40,6 +40,7 @@
           type="checkbox"
           role="switch"
           id="flexSwitchCheckChecked"
+          formControlName="notificaciones"
         />
         <label class="form-check-label" for="flexSwitchCheckChecked">
           Quiero recibir notificaciones
@@ -57,6 +58,7 @@
           class="form-check-input"
           type="checkbox"
           id="flexCheckDefault"
+          formControlName="condiciones"
         />
         <label class="form-check-label" for="flexCheckDefault">
           Terminos y condiciones den uso
@@ -68,7 +70,8 @@
 
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary float-end">
+      <button class="btn btn-primary float-end"
+              type="submit">
         Guardar
       </button>
     </div>
@@ -77,7 +80,7 @@
 </form>
 
 
-<!-- <h5>Valor del formulario</h5>
+<h5>Valor del formulario</h5>
 <pre>{{ miFormulario.value | json }}</pre>
 <br>
 
@@ -87,5 +90,3 @@
 
 <h5>Valid</h5>
 <pre>{{miFormulario.valid}}</pre>
-
-<h5>Condiciones:</h5> -->
