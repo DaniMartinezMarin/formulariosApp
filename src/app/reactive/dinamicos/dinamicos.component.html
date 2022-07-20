@@ -1,7 +1,7 @@
 <h2>Reactive: <small>Dinamicos </small></h2>
 <hr />
 
-<form autocomplete="off">
+<form (ngSubmit)="guardar()" [formGroup]="miFormulario" autocomplete="off">
 
   <!-- Nombre -->
   <div class="row mb-3">
@@ -11,8 +11,10 @@
         type="text"
         class="form-control"
         placeholder="Nombre de la persona"
+        formControlName="nombre"
       />
-      <span class="form-text text-danger">
+      <span class="form-text text-danger"
+            *ngIf="isInvalidField('nombre')">
         Este campo es obligatorio
       </span>
     </div>
@@ -46,22 +48,22 @@
   <!-- Lista de juegos favoritos -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Favoritos</label>
-    <div class="col-sm-9">
+    <div class="col-sm-9" formArrayName="favoritos">
 
-      <!-- <div
+      <div
         class="input-group mb-1"
-        *ngFor="let favorito of persona.favoritos; let i = index"
+        *ngFor="let favorito of favoritosArr.controls; let i = index"
       >
-        <input class="form-control"/>
+        <input class="form-control"
+              [formControlName]="i"/>
 
         <button
           class="btn btn-outline-danger"
           type="button"
-          (click)="1"
         >
           Eliminar
         </button>
-    </div> -->
+    </div>
 
     </div>
   </div>
@@ -70,9 +72,8 @@
     <div class="col-sm-12">
 
       <button
-        type="button"
+        type="submit"
         class="btn btn-primary float-end"
-        (click)="1"
       >
         Guardar
       </button>
@@ -82,5 +83,18 @@
 </form>
 
 
-<!-- <span>Persona</span>
-<pre>{{persona | json}}</pre> -->
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ miFormulario.valid }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ miFormulario.pristine }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ miFormulario.touched }}</pre>
+
+    <span>Value</span>
+    <pre>{{ miFormulario.value | json }}</pre>
+  </div>
+</div>
