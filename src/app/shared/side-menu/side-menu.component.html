@@ -25,3 +25,17 @@
   </li>
 
 </ul>
+
+<h2 class="mt-3">Validaciones</h2>
+<hr>
+
+<ul class="list-group">
+
+  <li *ngFor="let authMenuItem of authMenuItems"
+      class="list-group-item"
+      [routerLink]= [authMenuItem.ruta]
+      routerLinkActive="active"> <!-- Se añade la clase active de bootstrap al routerLinkActive -->
+    {{ authMenuItem.texto }}
+  </li>
+
+</ul>
