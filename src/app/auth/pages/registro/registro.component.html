@@ -48,6 +48,11 @@
                   class="form-control"
                   formControlName="username"
                   placeholder="Username del usuario">
+
+          <span class="form-text text-danger"
+                  *ngIf="isInvalidField('username')">
+              El username no puede ser agathor o vacio
+          </span>
         </div>
       </div>
 
@@ -57,7 +62,13 @@
         <div class="col-sm-9">
           <input type="password"
                   class="form-control"
+                  formControlName="password"
                   placeholder="Contraseña del usuario">
+
+          <span class="form-text text-danger"
+                *ngIf="isInvalidField('password')">
+              La contraseña debe de ser mayor de 6 carácteres
+          </span>
         </div>
       </div>
 
@@ -67,7 +78,13 @@
         <div class="col-sm-9">
           <input type="password"
                   class="form-control"
+                  formControlName="confirm_password"
                   placeholder="Confirmar contraseña">
+
+          <span class="form-text text-danger"
+                *ngIf="isInvalidField('confirm_password')">
+              Las contraseñas deben de ser iguales
+          </span>
         </div>
       </div>
 
@@ -86,6 +103,8 @@
 
 
 <h5>Form Valid: {{miFormulario.valid}}</h5>
+<h5>Form errors:</h5>
+<pre>{{miFormulario.errors | json}}</pre>
 
 <h5>Nombre errores</h5>
 <pre>{{miFormulario.controls.nombre.errors | json}}</pre>
@@ -95,3 +114,9 @@
 
 <h5>Username errores</h5>
 <pre>{{miFormulario.controls.username.errors | json}}</pre>
+
+<h5>Contraseña errores</h5>
+<pre>{{miFormulario.controls.password.errors | json}}</pre>
+
+<h5>Confirmar contraseña errores</h5>
+<pre>{{miFormulario.controls.confirm_password.errors | json}}</pre>
