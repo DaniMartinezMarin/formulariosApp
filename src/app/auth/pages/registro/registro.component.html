@@ -33,10 +33,10 @@
                   formControlName="email"
                   placeholder="Email del usuario">
 
-          <span class="form-text text-danger"
+            <span class="form-text text-danger"
                   *ngIf="isInvalidField('email')">
-              El email es obligatorio
-          </span>
+              {{emailErrorMsg}}
+            </span>
         </div>
       </div>
 

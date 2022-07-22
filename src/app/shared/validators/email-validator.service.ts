@@ -18,9 +18,9 @@ export class EmailValidatorService implements AsyncValidator{
     return this.http.get<any[]>(`http://localhost:3000/usuarios?q=${email}`)
                 .pipe(
                   map( resp => {
-                    return (resp.length === 0) ? null : {emailExiste: true}
+                    return (resp.length === 0) ? null : {emailAlreadyExists: true}
                   }),
-                  delay(3000)
+                  //delay(3000)
                 );
   }
 }
